@@ -18,3 +18,11 @@ export interface ProductResponse {
   total: number;
   products: ProductDataType[];
 }
+
+export interface ParamsType {
+  pageNum: number;
+  limit: number;
+  offset: number;
+  q: string;
+  category: string;
+}

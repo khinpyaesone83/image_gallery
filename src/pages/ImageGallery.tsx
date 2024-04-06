@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import Category from "../components/Category";
 import Gallery from "../components/Gallery";
 import { useCategoryStore, useSearchStore } from "../store";
+import { ParamsType } from "../types/ProductType";
 
 const ImageGallery = () => {
   const store = useCategoryStore();
@@ -16,16 +17,7 @@ const ImageGallery = () => {
   const [limit, setLimit] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  type QueryKeyType = [
-    "products",
-    {
-      pageNum: number;
-      limit: number;
-      offset: number;
-      q: string;
-      category: string;
-    }
-  ];
+  type QueryKeyType = ["products", ParamsType];
 
   const { data, isLoading } = useQuery({
     queryKey: [

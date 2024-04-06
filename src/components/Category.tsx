@@ -9,12 +9,12 @@ const Category = () => {
   const [text, setText] = useState<string>("");
 
   return (
-    <div style={{ padding: "10px", textAlign: "center", color: "#616161" }}>
+    <div style={{ padding: "10px", textAlign: "center" }}>
       <h2>Category</h2>
       {categories.map((cat: string) => (
         <H3
           style={{
-            color: text === cat ? "black" : "",
+            color: text === cat ? "black" : "#616161",
             fontSize: text === cat ? "18px" : "",
           }}
           onClick={() => {
