@@ -23,8 +23,6 @@ const Gallery = ({
       <div
         style={{
           margin: "0px 10px",
-          display: "flex",
-          justifyContent: "center",
         }}
       >
         <List
@@ -33,18 +31,17 @@ const Gallery = ({
           grid={{ xs: 1, sm: 2, md: 2, lg: 2, xl: 3, xxl: 4 }}
           renderItem={(item: ProductDataType) => {
             return (
-              // <Card hoverable key={item.id} style={{ margin: "12px" }}>
-              //   <Image
-              //     src={item.thumbnail}
-              //     preview={{ visible: false }}
-              //     onClick={() => handlePreviewImg(item.images)}
-              //   ></Image>
-              // </Card>
               <Card
                 key={item?.id}
                 hoverable
                 style={{ width: 300, marginBottom: "20px" }}
-                cover={<img alt={item?.title} src={item?.thumbnail} />}
+                cover={
+                  <Image
+                    alt={item?.title}
+                    preview={{ visible: false }}
+                    src={item?.thumbnail}
+                  />
+                }
                 onClick={() => handlePreviewImg(item.images)}
               >
                 <Meta title={item?.title} description={item?.description} />
