@@ -18,7 +18,7 @@ http://localhost:3000
 
 This is a React app built with the following technologies and libraries:
 
--Ant Design
--React Query
--Zustand
--Axios
+- Ant Design
+- React Query
+- Zustand
+- Axios
