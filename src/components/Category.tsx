@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useCategoryStore, useSearchStore } from "../store";
-import categories from "./categoryData";
+import categories from "../data/categoryData";
 
 const Category = () => {
   const store = useCategoryStore();
