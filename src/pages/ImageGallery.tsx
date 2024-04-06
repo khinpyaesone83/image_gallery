@@ -58,7 +58,7 @@ const ImageGallery = () => {
         <Col span={4} xs={0} sm={0} md={4}>
           <Category />
         </Col>
-        <Col span={20}>
+        <Col span={20} xs={24} sm={24}>
           <div style={{ margin: "0px 10px", textAlign: "center" }}>
             <Input.Search
               style={{
