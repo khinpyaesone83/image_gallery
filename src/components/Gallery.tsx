@@ -1,6 +1,8 @@
 import { Card, Image, List } from "antd";
 import { ProductDataType } from "../types/ProductType";
 
+const { Meta } = Card;
+
 interface Props {
   products: ProductDataType[];
   previewImgs: string[];
@@ -18,40 +20,57 @@ const Gallery = ({
 }: Props) => {
   return (
     <>
-      <List
-        dataSource={products}
-        loading={loading}
-        grid={{ xs: 1, sm: 2, md: 2, lg: 2, xl: 3, xxl: 4 }}
-        renderItem={(item: ProductDataType) => {
-          return (
-            <Card hoverable key={item.id} style={{ margin: "12px" }}>
-              <Image
-                src={item.thumbnail}
-                preview={{ visible: false }}
-                onClick={() => handlePreviewImg(item.images)}
-              ></Image>
-            </Card>
-          );
+      <div
+        style={{
+          margin: "0px 10px",
+          display: "flex",
+          justifyContent: "center",
         }}
-      ></List>
-      {previewImgs && previewImgs?.length > 0 && (
-        <>
-          <Image.PreviewGroup
-            preview={{
-              visible: previewImgs.length ? true : false,
-              onVisibleChange: (value) => {
-                if (!value) {
-                  resetPreviewImg();
-                }
-              },
-            }}
-          >
-            {previewImgs?.map((image: string, index: number) => (
-              <Image key={index} src={image} />
-            ))}
-          </Image.PreviewGroup>
-        </>
-      )}
+      >
+        <List
+          dataSource={products}
+          loading={loading}
+          grid={{ xs: 1, sm: 2, md: 2, lg: 2, xl: 3, xxl: 4 }}
+          renderItem={(item: ProductDataType) => {
+            return (
+              // <Card hoverable key={item.id} style={{ margin: "12px" }}>
+              //   <Image
+              //     src={item.thumbnail}
+              //     preview={{ visible: false }}
+              //     onClick={() => handlePreviewImg(item.images)}
+              //   ></Image>
+              // </Card>
+              <Card
+                key={item?.id}
+                hoverable
+                style={{ width: 300, marginBottom: "20px" }}
+                cover={<img alt={item?.title} src={item?.thumbnail} />}
+                onClick={() => handlePreviewImg(item.images)}
+              >
+                <Meta title={item?.title} description={item?.description} />
+              </Card>
+            );
+          }}
+        ></List>
+        {previewImgs && previewImgs?.length > 0 && (
+          <>
+            <Image.PreviewGroup
+              preview={{
+                visible: previewImgs.length ? true : false,
+                onVisibleChange: (value) => {
+                  if (!value) {
+                    resetPreviewImg();
+                  }
+                },
+              }}
+            >
+              {previewImgs?.map((image: string, index: number) => (
+                <Image key={index} src={image} />
+              ))}
+            </Image.PreviewGroup>
+          </>
+        )}
+      </div>
     </>
   );
 };
