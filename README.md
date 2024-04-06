@@ -1,4 +1,4 @@
-# React Typescript Auth
+# React Typescript
 
 # pre-requirements
 
