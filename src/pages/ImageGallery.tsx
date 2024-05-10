@@ -28,7 +28,10 @@ const ImageGallery = () => {
       const [, { limit, offset, q, category }] = queryKey as QueryKeyType;
       let url = category
         ? `https://dummyjson.com/products/category/${category}`
+        : !search
+        ? `https://dummyjson.com/products?limit=${limit}&skip=${offset}`
         : `https://dummyjson.com/products/search?limit=${limit}&skip=${offset}&q=${q}`;
+
       return axios.get(url).then((res) => res.data);
     },
   });
